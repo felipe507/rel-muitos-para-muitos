@@ -37,6 +37,29 @@ Route::get('/desenvolvedores', function () {
 
 });
 
+Route::get('/projetodesenvolvedores', function () {
+    $projetos = Projeto::with(['desenvolvedores'])->get();
+    foreach ($projetos as $projeto) {
+        echo "Projeto: " . $projeto->nome . '<br>';
+        echo "Horas: " . $projeto->estimativa_horas . '<br>';
+        if(count($projeto->desenvolvedores) > 0) {
+            echo 'Desenvolvedores: <br>';
+            echo '<ul>';
+            foreach ($projeto->desenvolvedores as $desenvolvedor) {
+                echo '<li>';
+                echo  'Nome Desenvolvedor: ' . $desenvolvedor->nome .  " | ";
+                echo  'Cargo: ' . $desenvolvedor->cargo . " | ";
+                echo  'Horas trabalhadas:  ' . $desenvolvedor->pivot->horas_semanais . " | ";
+                echo '</li>';
+            }
+            echo '</ul>';
+        }
+        echo '<hr>';
+    }
+
+
+});
+
 Route::get('/projetos', function () {
     return view('welcome');
 });
