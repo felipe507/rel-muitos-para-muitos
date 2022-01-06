@@ -69,6 +69,19 @@ Route::get('/alocar', function () {
             6 => ['horas_semanais' => 30],
             7 => ['horas_semanais' => 30]
         ]);
+        return "Desenvolvedores alocados com sucesso!";
+
+    }
+});
+
+Route::get('/desalocar', function () {
+    $projeto = Projeto::find(3);
+    if (isset($projeto)) {
+        //desalocando desenvolvedor do projeto
+        //$projeto->desenvolvedores()->detach(3);
+        //$projeto->desenvolvedores()->detach(7);
+        $projeto->desenvolvedores()->detach([6, 7]);
+        return "Desenvolvedores desalocados com sucesso!";
 
     }
 });
