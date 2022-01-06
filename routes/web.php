@@ -60,6 +60,19 @@ Route::get('/projetodesenvolvedores', function () {
 
 });
 
+Route::get('/alocar', function () {
+    $projeto = Projeto::find(3);
+    if (isset($projeto)) {
+        //adicionando desenvolvedor no projeto e atribuindo horas na tabela alocacoes
+        //$projeto->desenvolvedores()->attach(2, ['horas_semanais' => 20]);
+        $projeto->desenvolvedores()->attach([
+            6 => ['horas_semanais' => 30],
+            7 => ['horas_semanais' => 30]
+        ]);
+
+    }
+});
+
 Route::get('/projetos', function () {
     return view('welcome');
 });
