@@ -16,5 +16,6 @@ class AlocacacoesSeeder extends Seeder
         DB::table('alocacoes')->insert(['projeto_id' => 3, 'desenvolvedor_id' => 3, 'horas_semanais' => 35]);
         DB::table('alocacoes')->insert(['projeto_id' => 4, 'desenvolvedor_id' => 4, 'horas_semanais' => 20]);
         DB::table('alocacoes')->insert(['projeto_id' => 3, 'desenvolvedor_id' => 5, 'horas_semanais' => 30]);
+        DB::table('alocacoes')->insert(['projeto_id' => 2, 'desenvolvedor_id' => 5, 'horas_semanais' => 30]);
     }
 }
